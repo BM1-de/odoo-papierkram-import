@@ -35,11 +35,11 @@ jobs:
       - uses: actions/checkout@v4
         with:
           persist-credentials: false
-      - name: Install l10n_de_euer from BM1-de/l10n-germany-euer
+      - name: Install l10n_de_euer from BM1-de/odoo-l10n-germany-euer
         # needed by the bridge module l10n_de_papierkram_import_euer; not on PyPI
         run: |
-          git clone --depth 1 --branch 19.0 https://github.com/BM1-de/l10n-germany-euer /tmp/l10n-germany-euer
-          pip install /tmp/l10n-germany-euer/l10n_de_euer
+          git clone --depth 1 --branch 19.0 https://github.com/BM1-de/odoo-l10n-germany-euer /tmp/odoo-l10n-germany-euer
+          pip install /tmp/odoo-l10n-germany-euer/l10n_de_euer
       - name: Install addons and dependencies
         run: oca_install_addons
       - name: Initialize test db

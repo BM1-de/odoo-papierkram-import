@@ -28,7 +28,7 @@ Posten.
 | --- | --- | --- |
 | `l10n_de_papierkram_import` | Kontakte, Rechnungen und Gutschriften, Belege, Zahlungen, Anlagegüter mit Abschreibungen | `l10n_de` (SKR03 oder SKR04) |
 | `l10n_de_papierkram_import_timesheet` | Produkte, Zeiteinträge und noch nicht abgerechnete Leistungen als Aufträge | `sale_timesheet` |
-| `l10n_de_papierkram_import_euer` | Anlagegüter direkt ins Anlagenverzeichnis der [Deutschen EÜR für Odoo](https://github.com/BM1-de/l10n-germany-euer) | `l10n_de_euer` |
+| `l10n_de_papierkram_import_euer` | Anlagegüter direkt ins Anlagenverzeichnis der [Deutschen EÜR für Odoo](https://github.com/BM1-de/odoo-l10n-germany-euer) | `l10n_de_euer` |
 
 Die beiden Zusatzmodule installiert Odoo automatisch, sobald ihre Voraussetzungen da sind.
 
@@ -99,7 +99,7 @@ in der Datenbank, verwendet die Übernahme ihn mit.
 - Stichproben gegen Papierkram: Summen je Jahr, offene Posten, Anlagegüter.
 - Ein übernommener Beleg wird bei einer späteren Übernahme nicht aktualisiert: Zahlungen,
   die Papierkram danach noch erfasst, in Odoo buchen.
-- Mit der [Deutschen EÜR für Odoo](https://github.com/BM1-de/l10n-germany-euer) stehen die
+- Mit der [Deutschen EÜR für Odoo](https://github.com/BM1-de/odoo-l10n-germany-euer) stehen die
   Anlagegüter mit Buchwert zum Stichtag im Anlagenverzeichnis, und die EÜR des laufenden
   Jahres lässt sich gleich in Odoo rechnen.
 
