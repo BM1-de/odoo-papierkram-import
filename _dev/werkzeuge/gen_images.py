@@ -3,8 +3,8 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 """Banner and icon of the three modules (static/description).
 
-Same style as l10n_de_euer. Runs inside the Odoo container, which has Pillow
-and the DejaVu fonts::
+In English, as the Odoo Apps Store requires, and in the style of l10n_de_euer.
+Runs inside the Odoo container, which has Pillow and the DejaVu fonts::
 
     docker compose run --rm --no-deps -T --entrypoint python3 odoo - \
         < _dev/werkzeuge/gen_images.py
@@ -31,9 +31,9 @@ MODULES = (
         "Import",
         (
             "Papierkram → Odoo",
-            "Kontakte, Rechnungen, Belege, Zahlungen, Anlagegüter",
-            "die komplette Historie oder nur die offenen Posten",
-            "Odoo 19 · aus den Papierkram-Exporten · SKR03 und SKR04",
+            "Contacts, invoices, vouchers, payments, fixed assets",
+            "the complete history or only the open items",
+            "Odoo 19 · from the Papierkram exports · SKR03 and SKR04",
         ),
     ),
     (
@@ -41,19 +41,19 @@ MODULES = (
         "EÜR",
         (
             "Papierkram → EÜR",
-            "Anlagegüter mit Buchwert zum Übernahmestichtag",
-            "direkt ins Anlagenverzeichnis der Anlage AVEÜR",
-            "Odoo 19 · mit Papierkram Import und Germany EÜR",
+            "Fixed assets with their book value at the takeover date",
+            "straight into the asset register of the Anlage AVEÜR",
+            "Odoo 19 · with Papierkram Import and Germany EÜR",
         ),
     ),
     (
         "l10n_de_papierkram_import_timesheet",
-        "Zeiten",
+        "Time",
         (
-            "Papierkram → Zeiten",
-            "Produkte, Zeiteinträge und offene Leistungen",
-            "je Kunde ein Auftrag, in Odoo abrechenbar",
-            "Odoo 19 · mit Papierkram Import und Zeiterfassung",
+            "Papierkram → Timesheets",
+            "Products, time entries and unbilled work",
+            "one sales order per customer, invoiced in Odoo",
+            "Odoo 19 · with Papierkram Import and Timesheets",
         ),
     ),
 )

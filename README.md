@@ -20,7 +20,7 @@ Posten.
 > Übernahme stichprobenartig mit Papierkram vergleichen. Die Software wird ohne
 > Gewährleistung bereitgestellt (AGPL-3.0, Abschnitte 15 und 16).
 
-![Fertige Übernahme mit Ergebnisübersicht](l10n_de_papierkram_import/static/description/import_result.png)
+![Fertige Übernahme mit Ergebnisübersicht](docs/screenshots/import-ergebnis.png)
 
 ## Die Module
 
@@ -79,7 +79,7 @@ CSV-Dateien hochladen und einstellen:
 Die Journale *Papierkram Rechnungen*, *Belege*, *Zahlungen* und *Abschreibungen* legt die
 Übernahme selbst an, wenn keine vorhandenen gewählt sind.
 
-![Übernahme anlegen: Exporte hochladen und einstellen](l10n_de_papierkram_import/static/description/import_upload.png)
+![Übernahme anlegen: Exporte hochladen und einstellen](docs/screenshots/import-hochladen.png)
 
 ### 4. Prüfen und übernehmen
 
@@ -92,7 +92,7 @@ Jede Buchung behält ihre Papierkram-Nummer, neue Kontakte ihre Kunden- oder
 Lieferantennummer (`K-…`, `L-…`) als Referenz. Gibt es einen Kontakt gleichen Namens schon
 in der Datenbank, verwendet die Übernahme ihn mit.
 
-![Übernommene Ausgangsrechnungen](l10n_de_papierkram_import/static/description/invoices.png)
+![Übernommene Ausgangsrechnungen](docs/screenshots/rechnungen.png)
 
 ### 5. Danach
 
@@ -103,7 +103,7 @@ in der Datenbank, verwendet die Übernahme ihn mit.
   Anlagegüter mit Buchwert zum Stichtag im Anlagenverzeichnis, und die EÜR des laufenden
   Jahres lässt sich gleich in Odoo rechnen.
 
-![Anlagegut im Anlagenverzeichnis der EÜR](l10n_de_papierkram_import_euer/static/description/asset_register.png)
+![Anlagegut im Anlagenverzeichnis der EÜR](docs/screenshots/anlagenverzeichnis.png)
 
 ## Grenzen
 
