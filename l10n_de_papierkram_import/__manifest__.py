@@ -16,5 +16,6 @@
         "security/ir.model.access.csv",
         "views/papierkram_import_views.xml",
     ],
+    "images": ["static/description/banner.png"],
     "installable": True,
 }

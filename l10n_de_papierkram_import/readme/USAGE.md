@@ -17,6 +17,10 @@
 5. Click *Check* and read the log. Blocking issues must be solved first.
 6. Click *Import*.
 
+![Upload the exports and choose the settings](../static/description/import_upload.png)
+
+![The finished import with its result](../static/description/import_result.png)
+
 A document imported once is not updated by a later import: a payment that
 Papierkram records afterwards for an imported invoice has to be entered in
 Odoo.
@@ -27,3 +31,5 @@ assets over into its asset register; for an import made before, the button
 *Take Over Fixed Assets (EÜR)* does it later. With `sale_timesheet`, the module
 `l10n_de_papierkram_import_timesheet` (installed automatically) imports
 products, time entries and the unbilled work.
+
+![Imported customer invoices](../static/description/invoices.png)

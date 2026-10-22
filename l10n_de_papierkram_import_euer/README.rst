@@ -103,6 +103,10 @@ An import made before the EÜR was enabled keeps its depreciation
 entries; the button *Take Over Fixed Assets (EÜR)* on the import takes
 its assets over afterwards with the takeover date set there.
 
+|An asset taken over into the EÜR asset register|
+
+.. |An asset taken over into the EÜR asset register| image:: https://raw.githubusercontent.com/BM1-de/odoo-papierkram-import/19.0/l10n_de_papierkram_import_euer/static/description/asset_register.png
+
 Known issues / Roadmap
 ======================
 

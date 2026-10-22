@@ -13,5 +13,6 @@
     "depends": ["l10n_de_papierkram_import", "sale_timesheet"],
     "data": ["views/papierkram_import_views.xml"],
     "auto_install": True,
+    "images": ["static/description/banner.png"],
     "installable": True,
 }

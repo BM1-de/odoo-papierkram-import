@@ -14,3 +14,5 @@ Register*.
 An import made before the EÜR was enabled keeps its depreciation entries; the
 button *Take Over Fixed Assets (EÜR)* on the import takes its assets over
 afterwards with the takeover date set there.
+
+![An asset taken over into the EÜR asset register](../static/description/asset_register.png)
