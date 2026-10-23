@@ -17,7 +17,8 @@ business.
      `test.log` and `summary.md` (tag, commit, Odoo version and image, PostgreSQL
      version, counts and coverage per module and in total; a failed `setUpClass` counts
      for its module). The summary is written by `_dev/werkzeuge/protocol_summary.py`,
-     the same as in the workflow `release`.
+     the same as in the workflow `release`, and so is the version of coverage.py
+     (7.16.2).
    - `pre-commit run --all-files` is clean (also the job `pre-commit` of the CI); every
      `i18n/de.po` is complete.
    - Coverage: at least 95 % of lines and at least 95 % of branches in every module and
@@ -39,7 +40,9 @@ business.
    tree. The workflow `release` runs the tests once more and attaches the test protocol
    (JUnit XML and coverage) to the GitHub release. Run `test_protocol.sh` again on the
    tagged commit: its `summary.md` must show the tag and a clean working tree, otherwise
-   it is no release protocol.
+   it is no release protocol. Started by hand for an existing tag (_Actions → release →
+   Run workflow_, input `tag`), the workflow creates the protocol of that tag again with
+   the tools of `19.0` and replaces the asset of the release.
 7. **Archive:** both test protocols (GitHub release asset and local run) and the private
    results are kept by BM1 for five years.
 
