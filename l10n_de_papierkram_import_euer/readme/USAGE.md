@@ -16,3 +16,6 @@ button *Take Over Fixed Assets (EÜR)* on the import takes its assets over
 afterwards with the takeover date set there.
 
 ![An asset taken over into the EÜR asset register](../static/description/asset_register.png)
+
+The screenshot was taken with Odoo 19; the form of Odoo 20 looks slightly
+different.

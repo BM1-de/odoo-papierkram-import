@@ -33,3 +33,6 @@ assets over into its asset register; for an import made before, the button
 products, time entries and the unbilled work.
 
 ![Imported customer invoices](../static/description/invoices.png)
+
+The screenshots were taken with Odoo 19; the forms of Odoo 20 look slightly
+different.

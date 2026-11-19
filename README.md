@@ -122,7 +122,8 @@ python3 -I _dev/werkzeuge/gen_demo_export.py build/demo
 ```
 
 und lässt sich wie oben beschrieben in einer Testdatenbank übernehmen. Daraus stammen auch
-die Screenshots.
+die Screenshots; sie sind mit Odoo 19 aufgenommen, in Odoo 20 sehen die Masken etwas anders
+aus.
 
 ## Mehr Dokumentation
 

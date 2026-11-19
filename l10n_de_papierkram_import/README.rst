@@ -121,6 +121,9 @@ unbilled work.
 
 |Imported customer invoices|
 
+The screenshots were taken with Odoo 19; the forms of Odoo 20 look
+slightly different.
+
 .. |Upload the exports and choose the settings| image:: https://raw.githubusercontent.com/BM1-de/odoo-papierkram-import/20.0/l10n_de_papierkram_import/static/description/import_upload.png
 .. |The finished import with its result| image:: https://raw.githubusercontent.com/BM1-de/odoo-papierkram-import/20.0/l10n_de_papierkram_import/static/description/import_result.png
 .. |Imported customer invoices| image:: https://raw.githubusercontent.com/BM1-de/odoo-papierkram-import/20.0/l10n_de_papierkram_import/static/description/invoices.png
