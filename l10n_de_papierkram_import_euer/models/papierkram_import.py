@@ -11,7 +11,6 @@ journal items of their voucher. From the takeover date on, the register
 computes the depreciation, and the EÜR counts only the register (spec 5.8).
 """
 
-import base64
 import csv
 import io
 from datetime import date
@@ -21,6 +20,7 @@ from markupsafe import Markup, escape
 
 from odoo import Command, api, fields, models
 from odoo.exceptions import UserError, ValidationError
+from odoo.tools import BinaryBytes
 
 from odoo.addons.l10n_de_euer.models.engine import depreciation as dep
 from odoo.addons.l10n_de_euer.wizards.asset_from_move_line import group_ranges
@@ -363,7 +363,7 @@ class PapierkramImport(models.Model):
             {
                 "company_id": self.company_id.id,
                 "opening_date": takeover,
-                "file": base64.b64encode(buffer.getvalue().encode()),
+                "file": BinaryBytes(buffer.getvalue().encode()),
                 "filename": "papierkram_assets.csv",
             }
         )

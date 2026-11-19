@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!-- Copyright 2026 Baumgärtner Marketing GmbH
      License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
 <odoo>
@@ -15,7 +15,7 @@
                     name="action_view_euer_assets"
                     type="object"
                     class="oe_stat_button"
-                    icon="fa-cubes"
+                    icon="inventory_2"
                     invisible="euer_asset_count == 0"
                 >
                     <field name="euer_asset_count" widget="statinfo" string="Assets" />

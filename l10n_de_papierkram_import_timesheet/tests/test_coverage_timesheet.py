@@ -3,7 +3,6 @@
 """Further cases of the time entry import: regular VAT, entries that are
 only in the file, no time entries, missing rights and the parsers."""
 
-import base64
 import os
 import tempfile
 import zipfile
@@ -11,6 +10,7 @@ from decimal import Decimal
 from types import SimpleNamespace
 
 from odoo.tests import BaseCase, new_test_user, tagged
+from odoo.tools import BinaryBytes
 
 from odoo.addons.account.tests.common import AccountTestInvoicingCommon
 from odoo.addons.l10n_de_papierkram_import.tests.common import (
@@ -53,7 +53,7 @@ class TestTimesheetImportCases(AccountTestInvoicingCommon):
             )
         with open(path, "rb") as fh:
             cls.export = cls.env["ir.attachment"].create(
-                {"name": os.path.basename(path), "datas": base64.b64encode(fh.read())}
+                {"name": os.path.basename(path), "raw": fh.read()}
             )
         # recorded by the user of Odoo for a customer that is no contact of
         # the export; only in the file of unbilled time entries
@@ -61,7 +61,7 @@ class TestTimesheetImportCases(AccountTestInvoicingCommon):
             f"07.03.2026;14:00;15:00;1:00;1:00;nein;{cls.env.user.name};"
             "Fremdkunde AG;Kein Projekt;Konzeption;Lektorat (70);70,0;70,0;Nur Datei"
         )
-        cls.unbilled = base64.b64encode(
+        cls.unbilled = BinaryBytes(
             "\n".join((H_TIME, OPEN_A, cls.only_in_file)).encode()
         )
         cls.env.user.group_ids |= (
@@ -75,7 +75,7 @@ class TestTimesheetImportCases(AccountTestInvoicingCommon):
         run = self.env["papierkram.import"].create(
             {
                 "export_attachment_ids": [(6, 0, self.export.ids)],
-                "categories_file": base64.b64encode(KATEGORIEN.encode()),
+                "categories_file": BinaryBytes(KATEGORIEN.encode()),
                 "unbilled_file": self.unbilled,
                 **values,
             }

@@ -33,7 +33,7 @@ MODULES = (
             "Papierkram → Odoo",
             "Contacts, invoices, vouchers, payments, fixed assets",
             "the complete history or only the open items",
-            "Odoo 19 · from the Papierkram exports · SKR03 and SKR04",
+            "Odoo 20 · from the Papierkram exports · SKR03 and SKR04",
         ),
     ),
     (
@@ -43,7 +43,7 @@ MODULES = (
             "Papierkram → EÜR",
             "Fixed assets with their book value at the takeover date",
             "straight into the asset register of the Anlage AVEÜR",
-            "Odoo 19 · with Papierkram Import and Germany EÜR",
+            "Odoo 20 · with Papierkram Import and Germany EÜR",
         ),
     ),
     (
@@ -53,7 +53,7 @@ MODULES = (
             "Papierkram → Timesheets",
             "Products, time entries and unbilled work",
             "one sales order per customer, invoiced in Odoo",
-            "Odoo 19 · with Papierkram Import and Timesheets",
+            "Odoo 20 · with Papierkram Import and Timesheets",
         ),
     ),
 )

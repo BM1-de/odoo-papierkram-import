@@ -128,8 +128,6 @@
  "Voucher Journal": "Journal Belege",
  "Vouchers imported": "Belege übernommen",
  "Vouchers in export": "Belege im Export",
- "Website Messages": "Website-Nachrichten",
- "Website communication history": "Verlauf der Website-Kommunikation",
  "last payment date": "letztes Bezahldatum",
  "misc_journal_id": "misc_journal_id",
  "money_journal_id": "money_journal_id",
@@ -137,5 +135,7 @@
  "paid on": "Zahlung am",
  "papierkram_import_id": "papierkram_import_id",
  "purchase_journal_id": "purchase_journal_id",
- "Small business is ticked, but invoices show VAT (%s): untick it if the business was subject to regular VAT in Papierkram. Ticked, these invoices are imported without their VAT.": "Kleinunternehmer ist eingeschaltet, aber Rechnungen weisen Umsatzsteuer aus (%s): Schalten Sie es aus, wenn das Unternehmen in Papierkram regelbesteuert war. Eingeschaltet werden diese Rechnungen ohne ihre Umsatzsteuer übernommen."
+ "Small business is ticked, but invoices show VAT (%s): untick it if the business was subject to regular VAT in Papierkram. Ticked, these invoices are imported without their VAT.": "Kleinunternehmer ist eingeschaltet, aber Rechnungen weisen Umsatzsteuer aus (%s): Schalten Sie es aus, wenn das Unternehmen in Papierkram regelbesteuert war. Eingeschaltet werden diese Rechnungen ohne ihre Umsatzsteuer übernommen.",
+ "Import contacts, invoices, vouchers, payments and assets from Papierkram": "Kontakte, Rechnungen, Belege, Zahlungen und Anlagegüter aus Papierkram übernehmen",
+ "Ratings": "Bewertungen"
 }

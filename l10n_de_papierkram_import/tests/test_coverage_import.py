@@ -3,7 +3,6 @@
 """Import of a fictitious business with regular VAT, edge cases of the
 reader and the checks before an import."""
 
-import base64
 import os
 import tempfile
 import unicodedata
@@ -13,6 +12,7 @@ from decimal import Decimal
 
 from odoo.exceptions import UserError
 from odoo.tests import BaseCase, tagged
+from odoo.tools import BinaryBytes
 
 from odoo.addons.account.tests.common import AccountTestInvoicingCommon
 
@@ -122,7 +122,7 @@ NORDLICHT = ("Nordlicht SL", "K-00002")
 def attach(env, path):
     with open(path, "rb") as fh:
         return env["ir.attachment"].create(
-            {"name": os.path.basename(path), "datas": base64.b64encode(fh.read())}
+            {"name": os.path.basename(path), "raw": fh.read()}
         )
 
 
@@ -289,8 +289,8 @@ class TestRegularVatImport(AccountTestInvoicingCommon):
         cls.pk_run = cls.env["papierkram.import"].create(
             {
                 "export_attachment_ids": [(6, 0, cls.attachment.ids)],
-                "categories_file": base64.b64encode(CATEGORIES.encode()),
-                "assets_file": base64.b64encode(ASSETS.encode()),
+                "categories_file": BinaryBytes(CATEGORIES.encode()),
+                "assets_file": BinaryBytes(ASSETS.encode()),
                 "small_business": False,
                 "depreciation_until": date(2025, 12, 31),
             }
@@ -335,13 +335,15 @@ class TestRegularVatImport(AccountTestInvoicingCommon):
     def test_partners(self):
         """Contacts: an unknown country and an invalid VAT number are only
         reported (the number is not stored); a customer without number is
-        found or created by name."""
+        found or created by name. Without VAT number Odoo does not regard a
+        contact as a company."""
         muster = self._move("R-00100", "out_invoice").partner_id
         self.assertFalse(muster.country_id)
         self.assertIn("Country 'Atlantis' not found.", self.log)
         nordlicht = self._move("R-00101", "out_invoice").partner_id
         self.assertEqual(nordlicht.country_id.code, "ES")
         self.assertFalse(nordlicht.vat)
+        self.assertFalse(nordlicht.is_company)
         self.assertIn("Contact K-00002: VAT number 'ES123' not imported.", self.log)
         walk_in = self._move("R-00105", "out_invoice").partner_id
         self.assertEqual(walk_in.name, "Laufkundschaft")
@@ -367,6 +369,8 @@ class TestRegularVatImport(AccountTestInvoicingCommon):
             (partner.name, partner.papierkram_number, partner.vat),
             ("Eiche Verlag GmbH", "K-00009", "DE123456788"),
         )
+        # the VAT number makes the contact a company
+        self.assertTrue(partner.is_company)
 
     def test_cash_discount_with_vat_is_reported(self):
         discount = self._move("R-00106-SKONTO", "out_refund")
@@ -435,7 +439,7 @@ class TestRegularVatImport(AccountTestInvoicingCommon):
         run = self.env["papierkram.import"].create(
             {
                 "export_attachment_ids": [(6, 0, attach(self.env, path).ids)],
-                "categories_file": base64.b64encode(
+                "categories_file": BinaryBytes(
                     (KATEGORIEN + "X;1;Unbekannt;EXPENSE;;EXPENSE\n").encode()
                 ),
             }

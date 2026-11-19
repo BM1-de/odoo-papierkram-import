@@ -3,7 +3,7 @@
 {
     "name": "Papierkram Timesheets",
     "summary": "Import products, time entries and unbilled work from Papierkram",
-    "version": "19.0.1.0.0",
+    "version": "20.0.1.0.0",
     "category": "Accounting/Localizations",
     "website": "https://github.com/BM1-de/odoo-papierkram-import",
     "author": "Baumgärtner Marketing GmbH",

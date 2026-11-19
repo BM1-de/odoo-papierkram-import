@@ -2,7 +2,6 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 """Takeover of fictitious Papierkram fixed assets into the asset register."""
 
-import base64
 import os
 import tempfile
 from datetime import date
@@ -10,6 +9,7 @@ from decimal import Decimal
 
 from odoo.exceptions import UserError, ValidationError
 from odoo.tests import tagged
+from odoo.tools import BinaryBytes
 
 from odoo.addons.account.tests.common import AccountTestInvoicingCommon
 from odoo.addons.l10n_de_papierkram_import.tests.common import (
@@ -97,7 +97,7 @@ def build_attachments(cls):
             attachments |= cls.env["ir.attachment"].create(
                 {
                     "name": os.path.basename(path),
-                    "datas": base64.b64encode(fh.read()),
+                    "raw": fh.read(),
                 }
             )
     return attachments
@@ -114,8 +114,8 @@ class TestAssetTakeover(AccountTestInvoicingCommon):
         cls.pk_run = cls.env["papierkram.import"].create(
             {
                 "export_attachment_ids": [(6, 0, attachments.ids)],
-                "categories_file": base64.b64encode(CATEGORIES.encode()),
-                "assets_file": base64.b64encode(ASSETS.encode()),
+                "categories_file": BinaryBytes(CATEGORIES.encode()),
+                "assets_file": BinaryBytes(ASSETS.encode()),
                 "depreciation_until": date(2026, 12, 31),
                 "euer_takeover_date": date(2025, 12, 31),
             }
@@ -226,8 +226,8 @@ class TestAssetTakeoverLater(AccountTestInvoicingCommon):
         cls.pk_run = cls.env["papierkram.import"].create(
             {
                 "export_attachment_ids": [(6, 0, attachments.ids)],
-                "categories_file": base64.b64encode(CATEGORIES.encode()),
-                "assets_file": base64.b64encode(ASSETS.encode()),
+                "categories_file": BinaryBytes(CATEGORIES.encode()),
+                "assets_file": BinaryBytes(ASSETS.encode()),
                 "depreciation_until": date(2025, 12, 31),
             }
         )

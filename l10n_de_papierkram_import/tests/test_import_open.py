@@ -10,7 +10,7 @@ from datetime import date
 from odoo import fields
 from odoo.exceptions import UserError
 from odoo.tests import tagged
-from odoo.tools import format_date
+from odoo.tools import BinaryBytes, format_date
 
 from odoo.addons.account.tests.common import AccountTestInvoicingCommon
 
@@ -64,7 +64,7 @@ class TestPapierkramImportOpenItems(AccountTestInvoicingCommon):
                 cls.attachments |= cls.env["ir.attachment"].create(
                     {
                         "name": os.path.basename(path),
-                        "datas": base64.b64encode(fh.read()),
+                        "raw": fh.read(),
                     }
                 )
 
@@ -72,7 +72,7 @@ class TestPapierkramImportOpenItems(AccountTestInvoicingCommon):
         run = self.env["papierkram.import"].create(
             {
                 "export_attachment_ids": [(6, 0, self.attachments.ids)],
-                "categories_file": base64.b64encode(KATEGORIEN.encode()),
+                "categories_file": BinaryBytes(KATEGORIEN.encode()),
                 "scope": scope,
             }
         )
@@ -110,9 +110,7 @@ class TestPapierkramImportOpenItems(AccountTestInvoicingCommon):
     def test_existing_contact_used(self):
         """A contact of the same name (e.g. shared with another company)
         gets the Papierkram number instead of a duplicate; its own data stay."""
-        existing = self.env["res.partner"].create(
-            {"name": "MUSTER GmbH", "is_company": True, "ref": "B-7"}
-        )
+        existing = self.env["res.partner"].create({"name": "MUSTER GmbH", "ref": "B-7"})
         run = self.run_import("open")
         self.assertEqual(
             run.move_ids.filtered("papierkram_number").partner_id
@@ -125,6 +123,16 @@ class TestPapierkramImportOpenItems(AccountTestInvoicingCommon):
             self.env["res.partner"].search_count([("name", "=ilike", "muster gmbh")]),
             1,
         )
+
+    def test_file_as_sent_by_the_form(self):
+        """The form sends an uploaded file as file name and base64 content;
+        the byte order mark of a CSV file is left out."""
+        content = base64.b64encode(b"\xef\xbb\xbf" + KATEGORIEN.encode()).decode()
+        run = self.env["papierkram.import"].create(
+            {"categories_file": {"filename": "kategorien.csv", "content": content}}
+        )
+        self.assertEqual(run._decode("categories_file"), KATEGORIEN)
+        self.assertIsNone(run._decode("assets_file"))
 
     def test_small_business_with_vat_and_name(self):
         """Small business ticked (the default) but an invoice with VAT: the
@@ -140,12 +148,12 @@ class TestPapierkramImportOpenItems(AccountTestInvoicingCommon):
         )
         with open(path, "rb") as fh:
             attachment = self.env["ir.attachment"].create(
-                {"name": os.path.basename(path), "datas": base64.b64encode(fh.read())}
+                {"name": os.path.basename(path), "raw": fh.read()}
             )
         run = self.env["papierkram.import"].create(
             {
                 "export_attachment_ids": [(6, 0, attachment.ids)],
-                "categories_file": base64.b64encode(KATEGORIEN.encode()),
+                "categories_file": BinaryBytes(KATEGORIEN.encode()),
             }
         )
         today = fields.Date.today()
@@ -165,7 +173,7 @@ class TestPapierkramImportOpenItems(AccountTestInvoicingCommon):
         with self.assertRaisesRegex(UserError, "upload at least one"):
             run.action_check()
         broken = self.env["ir.attachment"].create(
-            {"name": "kaputt.zip", "datas": base64.b64encode(b"no zip")}
+            {"name": "kaputt.zip", "raw": b"no zip"}
         )
         run.export_attachment_ids = broken
         with self.assertRaises(UserError):
@@ -180,12 +188,12 @@ class TestPapierkramImportOpenItems(AccountTestInvoicingCommon):
         )
         with open(path, "rb") as fh:
             attachment = self.env["ir.attachment"].create(
-                {"name": os.path.basename(path), "datas": base64.b64encode(fh.read())}
+                {"name": os.path.basename(path), "raw": fh.read()}
             )
         blocked = self.env["papierkram.import"].create(
             {
                 "export_attachment_ids": [(6, 0, attachment.ids)],
-                "categories_file": base64.b64encode(KATEGORIEN.encode()),
+                "categories_file": BinaryBytes(KATEGORIEN.encode()),
             }
         )
         with self.assertRaisesRegex(UserError, "blocked"):
@@ -229,7 +237,7 @@ class TestPapierkramImportSkr04(AccountTestInvoicingCommon):
         )
         with open(path, "rb") as fh:
             cls.attachment = cls.env["ir.attachment"].create(
-                {"name": os.path.basename(path), "datas": base64.b64encode(fh.read())}
+                {"name": os.path.basename(path), "raw": fh.read()}
             )
 
     def test_import_on_skr04(self):
@@ -239,7 +247,7 @@ class TestPapierkramImportSkr04(AccountTestInvoicingCommon):
         run = self.env["papierkram.import"].create(
             {
                 "export_attachment_ids": [(6, 0, self.attachment.ids)],
-                "categories_file": base64.b64encode(categories.encode()),
+                "categories_file": BinaryBytes(categories.encode()),
             }
         )
         run.action_check()

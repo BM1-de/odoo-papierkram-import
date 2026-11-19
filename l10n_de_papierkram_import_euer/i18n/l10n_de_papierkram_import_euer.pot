@@ -4,10 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 19.0-20261015\n"
+"Project-Id-Version: Odoo Server 20.0-20261110\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-20 11:35+0000\n"
-"PO-Revision-Date: 2026-10-20 11:35+0000\n"
+"POT-Creation-Date: 2026-11-19 17:16+0000\n"
+"PO-Revision-Date: 2026-11-19 17:16+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -125,6 +125,11 @@ msgid "Number of Assets"
 msgstr ""
 
 #. module: l10n_de_papierkram_import_euer
+#: model:ir.module.module,shortdesc:base.module_l10n_de_papierkram_import_euer
+msgid "Papierkram EÜR Assets"
+msgstr ""
+
+#. module: l10n_de_papierkram_import_euer
 #: model:ir.model,name:l10n_de_papierkram_import_euer.model_papierkram_import
 msgid "Papierkram Import"
 msgstr ""
@@ -139,6 +144,11 @@ msgstr ""
 #: model:ir.model.fields,field_description:l10n_de_papierkram_import_euer.field_papierkram_import__euer_asset_takeover
 #: model_terms:ir.ui.view,arch_db:l10n_de_papierkram_import_euer.papierkram_import_view_form
 msgid "Take Over Fixed Assets (EÜR)"
+msgstr ""
+
+#. module: l10n_de_papierkram_import_euer
+#: model:ir.module.module,summary:base.module_l10n_de_papierkram_import_euer
+msgid "Take over the fixed assets of Papierkram into the EÜR asset register"
 msgstr ""
 
 #. module: l10n_de_papierkram_import_euer

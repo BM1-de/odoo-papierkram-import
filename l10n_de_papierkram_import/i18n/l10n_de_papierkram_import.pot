@@ -4,10 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 19.0-20261015\n"
+"Project-Id-Version: Odoo Server 20.0-20261110\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-21 21:12+0000\n"
-"PO-Revision-Date: 2026-10-21 21:12+0000\n"
+"POT-Creation-Date: 2026-11-19 17:16+0000\n"
+"PO-Revision-Date: 2026-11-19 17:16+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -313,6 +313,12 @@ msgid "Import"
 msgstr ""
 
 #. module: l10n_de_papierkram_import
+#: model:ir.module.module,summary:base.module_l10n_de_papierkram_import
+msgid ""
+"Import contacts, invoices, vouchers, payments and assets from Papierkram"
+msgstr ""
+
+#. module: l10n_de_papierkram_import
 #: model_terms:ir.actions.act_window,help:l10n_de_papierkram_import.papierkram_import_action
 msgid "Import data from Papierkram"
 msgstr ""
@@ -498,6 +504,7 @@ msgstr ""
 #: model:ir.model,name:l10n_de_papierkram_import.model_papierkram_import
 #: model:ir.model.fields,field_description:l10n_de_papierkram_import.field_account_bank_statement_line__papierkram_import_id
 #: model:ir.model.fields,field_description:l10n_de_papierkram_import.field_account_move__papierkram_import_id
+#: model:ir.module.module,shortdesc:base.module_l10n_de_papierkram_import
 #: model:ir.ui.menu,name:l10n_de_papierkram_import.papierkram_import_menu
 msgid "Papierkram Import"
 msgstr ""
@@ -598,6 +605,11 @@ msgstr ""
 msgid ""
 "Posts the yearly depreciation of fixed assets following Papierkram's "
 "schedule (including the memo value of 1 €)."
+msgstr ""
+
+#. module: l10n_de_papierkram_import
+#: model:ir.model.fields,field_description:l10n_de_papierkram_import.field_papierkram_import__rating_ids
+msgid "Ratings"
 msgstr ""
 
 #. module: l10n_de_papierkram_import
@@ -784,16 +796,6 @@ msgstr ""
 #. odoo-python
 #: code:addons/l10n_de_papierkram_import/models/papierkram_import.py:0
 msgid "Vouchers in export"
-msgstr ""
-
-#. module: l10n_de_papierkram_import
-#: model:ir.model.fields,field_description:l10n_de_papierkram_import.field_papierkram_import__website_message_ids
-msgid "Website Messages"
-msgstr ""
-
-#. module: l10n_de_papierkram_import
-#: model:ir.model.fields,help:l10n_de_papierkram_import.field_papierkram_import__website_message_ids
-msgid "Website communication history"
 msgstr ""
 
 #. module: l10n_de_papierkram_import

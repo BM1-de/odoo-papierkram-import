@@ -10,7 +10,6 @@ on the order bills them in Odoo, like every later time entry on the same
 task.
 """
 
-import base64
 from collections import defaultdict
 
 from odoo import Command, api, fields, models
@@ -228,7 +227,7 @@ class _TimesheetImport:
     def _unbilled(self):
         if not self.run_rec.unbilled_file:
             return []
-        text = base64.b64decode(self.run_rec.unbilled_file).decode("utf-8-sig")
+        text = self.run_rec.unbilled_file.decode("utf-8-sig")
         return parse_time_entry_file(text)
 
     def _product(self, name, product=None, rate=None):

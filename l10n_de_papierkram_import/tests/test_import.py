@@ -2,12 +2,12 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 """Import of fictitious Papierkram exports into an SKR03 company."""
 
-import base64
 import os
 import tempfile
 from datetime import date
 
 from odoo.tests import tagged
+from odoo.tools import BinaryBytes
 
 from odoo.addons.account.tests.common import AccountTestInvoicingCommon
 
@@ -89,7 +89,7 @@ class TestPapierkramImport(AccountTestInvoicingCommon):
                 attachments |= cls.env["ir.attachment"].create(
                     {
                         "name": os.path.basename(path),
-                        "datas": base64.b64encode(fh.read()),
+                        "raw": fh.read(),
                     }
                 )
         splits = (
@@ -100,9 +100,9 @@ class TestPapierkramImport(AccountTestInvoicingCommon):
         cls.pk_run = cls.env["papierkram.import"].create(
             {
                 "export_attachment_ids": [(6, 0, attachments.ids)],
-                "categories_file": base64.b64encode(KATEGORIEN.encode()),
-                "assets_file": base64.b64encode(ASSETS.encode()),
-                "splits_file": base64.b64encode(splits.encode()),
+                "categories_file": BinaryBytes(KATEGORIEN.encode()),
+                "assets_file": BinaryBytes(ASSETS.encode()),
+                "splits_file": BinaryBytes(splits.encode()),
                 "depreciation_until": date(2025, 12, 31),
             }
         )

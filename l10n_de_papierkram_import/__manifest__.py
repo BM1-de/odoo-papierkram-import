@@ -4,7 +4,7 @@
     "name": "Papierkram Import",
     "summary": "Import contacts, invoices, vouchers, payments and assets "
     "from Papierkram",
-    "version": "19.0.1.0.0",
+    "version": "20.0.1.0.0",
     "category": "Accounting/Localizations",
     "website": "https://github.com/BM1-de/odoo-papierkram-import",
     "author": "Baumgärtner Marketing GmbH",
@@ -13,7 +13,7 @@
     "development_status": "Alpha",
     "depends": ["account", "l10n_de", "mail"],
     "data": [
-        "security/ir.model.access.csv",
+        "security/ir.access.csv",
         "views/papierkram_import_views.xml",
     ],
     "images": ["static/description/banner.png"],

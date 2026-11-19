@@ -18,7 +18,6 @@ Whatever cannot be imported unambiguously is reported in the log instead of
 being guessed.
 """
 
-import base64
 import csv
 import os
 import tempfile
@@ -265,7 +264,7 @@ class PapierkramImport(models.Model):
         value = self[field_name]
         if not value:
             return None
-        return base64.b64decode(value).decode("utf-8-sig")
+        return value.decode("utf-8-sig")
 
     def _read_export(self):
         if not self.export_attachment_ids:
@@ -276,7 +275,7 @@ class PapierkramImport(models.Model):
             safe = os.path.basename(att.name or f"export_{att.id}.zip")
             path = os.path.join(tmpdir, safe)
             with open(path, "wb") as fh:
-                fh.write(base64.b64decode(att.datas))
+                fh.write(att.raw.content)
             paths.append(path)
         try:
             return PapierkramExport.load(
@@ -619,11 +618,11 @@ class _Plan:
                 partner.papierkram_number = number
                 self.counts["partners_matched"] += 1
         if not partner and contact:
-            person = f"{contact.first_name} {contact.last_name}".strip()
+            # Odoo decides whether the contact is a company: it is one as
+            # soon as it has a VAT number (is_company is computed)
             partner = Partner.create(
                 {
                     "name": contact.name,
-                    "is_company": person != contact.name,
                     "papierkram_number": number,
                     "ref": number,
                     "street": contact.street or False,
@@ -691,7 +690,6 @@ class _Plan:
             partner = Partner.create(
                 {
                     "name": name,
-                    "is_company": True,
                     "supplier_rank": 1 if supplier else 0,
                     "customer_rank": 0 if supplier else 1,
                 }
@@ -912,7 +910,7 @@ class _Plan:
             att = self.env["ir.attachment"].create(
                 {
                     "name": filename,
-                    "datas": base64.b64encode(content),
+                    "raw": content,
                     "res_model": "account.move",
                     "res_id": move.id,
                     "mimetype": "application/pdf",

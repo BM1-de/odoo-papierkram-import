@@ -3,7 +3,7 @@
 {
     "name": "Papierkram EÜR Assets",
     "summary": "Take over the fixed assets of Papierkram into the EÜR asset register",
-    "version": "19.0.1.0.0",
+    "version": "20.0.1.0.0",
     "category": "Accounting/Localizations",
     "website": "https://github.com/BM1-de/odoo-papierkram-import",
     "author": "Baumgärtner Marketing GmbH",

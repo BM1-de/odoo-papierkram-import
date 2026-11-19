@@ -2,7 +2,6 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 """Import of fictitious Papierkram time entries and services."""
 
-import base64
 import os
 import tempfile
 import zipfile
@@ -10,6 +9,7 @@ from datetime import date
 from decimal import Decimal
 
 from odoo.tests import tagged
+from odoo.tools import BinaryBytes
 
 from odoo.addons.account.tests.common import AccountTestInvoicingCommon
 from odoo.addons.l10n_de_papierkram_import.tests.common import (
@@ -66,9 +66,9 @@ class TestTimesheetImport(AccountTestInvoicingCommon):
             )
         with open(path, "rb") as fh:
             cls.export = cls.env["ir.attachment"].create(
-                {"name": os.path.basename(path), "datas": base64.b64encode(fh.read())}
+                {"name": os.path.basename(path), "raw": fh.read()}
             )
-        cls.unbilled = base64.b64encode("\n".join((H_TIME, OPEN_A, OPEN_B)).encode())
+        cls.unbilled = BinaryBytes("\n".join((H_TIME, OPEN_A, OPEN_B)).encode())
         cls.env.user.group_ids |= (
             cls.env.ref("sales_team.group_sale_salesman")
             | cls.env.ref("project.group_project_manager")
@@ -80,7 +80,7 @@ class TestTimesheetImport(AccountTestInvoicingCommon):
         run = self.env["papierkram.import"].create(
             {
                 "export_attachment_ids": [(6, 0, self.export.ids)],
-                "categories_file": base64.b64encode(KATEGORIEN.encode()),
+                "categories_file": BinaryBytes(KATEGORIEN.encode()),
                 "unbilled_file": self.unbilled,
                 **values,
             }
@@ -175,7 +175,7 @@ class TestTimesheetImport(AccountTestInvoicingCommon):
         run = self.env["papierkram.import"].create(
             {
                 "export_attachment_ids": [(6, 0, self.export.ids)],
-                "categories_file": base64.b64encode(KATEGORIEN.encode()),
+                "categories_file": BinaryBytes(KATEGORIEN.encode()),
             }
         )
         run.action_check()

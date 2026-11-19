@@ -4,13 +4,13 @@
 one voucher, pool, low-value asset, non-depreciable asset, assets without
 voucher or category and purchases that cannot be linked or entered."""
 
-import base64
 import os
 import tempfile
 from datetime import date
 from decimal import Decimal
 
 from odoo.tests import tagged
+from odoo.tools import BinaryBytes
 
 from odoo.addons.account.tests.common import AccountTestInvoicingCommon
 from odoo.addons.l10n_de_papierkram_import.tests.common import make_export
@@ -127,15 +127,15 @@ class TestAssetTakeoverCases(AccountTestInvoicingCommon):
                 attachments |= cls.env["ir.attachment"].create(
                     {
                         "name": os.path.basename(path),
-                        "datas": base64.b64encode(fh.read()),
+                        "raw": fh.read(),
                     }
                 )
         cls.pk_run = cls.env["papierkram.import"].create(
             {
                 "export_attachment_ids": [(6, 0, attachments.ids)],
-                "categories_file": base64.b64encode(MORE_CATEGORIES.encode()),
-                "assets_file": base64.b64encode(ASSETS.encode()),
-                "splits_file": base64.b64encode(SPLITS.encode()),
+                "categories_file": BinaryBytes(MORE_CATEGORIES.encode()),
+                "assets_file": BinaryBytes(ASSETS.encode()),
+                "splits_file": BinaryBytes(SPLITS.encode()),
                 "depreciation_until": date(2026, 12, 31),
                 "euer_takeover_date": date(2025, 12, 31),
             }

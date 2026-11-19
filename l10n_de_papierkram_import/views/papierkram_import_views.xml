@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!-- Copyright 2026 Baumgärtner Marketing GmbH
      License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
 <odoo>
@@ -37,7 +37,7 @@
                             name="action_view_moves"
                             type="object"
                             class="oe_stat_button"
-                            icon="fa-list"
+                            icon="format_list_bulleted"
                             invisible="move_count == 0"
                         >
                             <field
@@ -54,6 +54,9 @@
                     </div>
                     <group>
                         <group string="Files from Papierkram">
+                            <!-- a file that was not uploaded is hidden once the
+                                 import is done: Odoo 20 shows "false" for an
+                                 empty read-only file field with a file name -->
                             <field
                                 name="export_attachment_ids"
                                 widget="many2many_binary"
@@ -63,18 +66,21 @@
                                 name="categories_file"
                                 filename="categories_filename"
                                 readonly="state == 'done'"
+                                invisible="state == 'done' and not categories_file"
                             />
                             <field name="categories_filename" invisible="1" />
                             <field
                                 name="assets_file"
                                 filename="assets_filename"
                                 readonly="state == 'done'"
+                                invisible="state == 'done' and not assets_file"
                             />
                             <field name="assets_filename" invisible="1" />
                             <field
                                 name="splits_file"
                                 filename="splits_filename"
                                 readonly="state == 'done'"
+                                invisible="state == 'done' and not splits_file"
                             />
                             <field name="splits_filename" invisible="1" />
                         </group>

@@ -17,7 +17,7 @@ Papierkram Import
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-BM1--de%2Fodoo--papierkram--import-lightgray.png?logo=github
-    :target: https://github.com/BM1-de/odoo-papierkram-import/tree/19.0/l10n_de_papierkram_import
+    :target: https://github.com/BM1-de/odoo-papierkram-import/tree/20.0/l10n_de_papierkram_import
     :alt: BM1-de/odoo-papierkram-import
 
 |badge1| |badge2| |badge3|
@@ -121,9 +121,9 @@ unbilled work.
 
 |Imported customer invoices|
 
-.. |Upload the exports and choose the settings| image:: https://raw.githubusercontent.com/BM1-de/odoo-papierkram-import/19.0/l10n_de_papierkram_import/static/description/import_upload.png
-.. |The finished import with its result| image:: https://raw.githubusercontent.com/BM1-de/odoo-papierkram-import/19.0/l10n_de_papierkram_import/static/description/import_result.png
-.. |Imported customer invoices| image:: https://raw.githubusercontent.com/BM1-de/odoo-papierkram-import/19.0/l10n_de_papierkram_import/static/description/invoices.png
+.. |Upload the exports and choose the settings| image:: https://raw.githubusercontent.com/BM1-de/odoo-papierkram-import/20.0/l10n_de_papierkram_import/static/description/import_upload.png
+.. |The finished import with its result| image:: https://raw.githubusercontent.com/BM1-de/odoo-papierkram-import/20.0/l10n_de_papierkram_import/static/description/import_result.png
+.. |Imported customer invoices| image:: https://raw.githubusercontent.com/BM1-de/odoo-papierkram-import/20.0/l10n_de_papierkram_import/static/description/invoices.png
 
 Known issues / Roadmap
 ======================
@@ -137,6 +137,24 @@ Known issues / Roadmap
 
 Changelog
 =========
+
+20.0.1.0.0 (2026-11-19)
+-----------------------
+
+- Migration to Odoo 20.
+- The permission of the import is in ``security/ir.access.csv`` now,
+  with the same content as before.
+- Binary fields return binary values instead of base64: the uploaded
+  exports and lists are read and the PDF documents are attached that
+  way.
+- Changed behaviour, caused by Odoo 20: Odoo decides on its own whether
+  a contact is a company, it is one as soon as it has a VAT number. The
+  import therefore no longer marks new contacts as companies; a contact
+  without VAT number is created as a person.
+- The form of a finished import hides the files that were not uploaded;
+  Odoo 20 would show "false" for them.
+- The button of the imported entries uses an icon of Odoo 20 (Material
+  Symbols).
 
 19.0.1.0.0
 ----------
@@ -154,7 +172,7 @@ Bug Tracker
 Bugs are tracked on `GitHub Issues <https://github.com/BM1-de/odoo-papierkram-import/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us to smash it by providing a detailed and welcomed
-`feedback <https://github.com/BM1-de/odoo-papierkram-import/issues/new?body=module:%20l10n_de_papierkram_import%0Aversion:%2019.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+`feedback <https://github.com/BM1-de/odoo-papierkram-import/issues/new?body=module:%20l10n_de_papierkram_import%0Aversion:%2020.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Do not contact contributors directly about support or help with technical issues.
 
@@ -182,6 +200,6 @@ Current maintainer:
 
 |maintainer-bm1-phillip| 
 
-This module is part of the `BM1-de/odoo-papierkram-import <https://github.com/BM1-de/odoo-papierkram-import/tree/19.0/l10n_de_papierkram_import>`_ project on GitHub.
+This module is part of the `BM1-de/odoo-papierkram-import <https://github.com/BM1-de/odoo-papierkram-import/tree/20.0/l10n_de_papierkram_import>`_ project on GitHub.
 
 You are welcome to contribute.

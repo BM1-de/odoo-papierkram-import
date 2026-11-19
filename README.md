@@ -2,14 +2,14 @@
 
 # Papierkram-Import für Odoo
 <!-- /!\ Non OCA Context : Set here the badge of your runbot / runboat instance. -->
-[![Pre-commit Status](https://github.com/BM1-de/odoo-papierkram-import/actions/workflows/pre-commit.yml/badge.svg?branch=19.0)](https://github.com/BM1-de/odoo-papierkram-import/actions/workflows/pre-commit.yml?query=branch%3A19.0)
-[![Build Status](https://github.com/BM1-de/odoo-papierkram-import/actions/workflows/test.yml/badge.svg?branch=19.0)](https://github.com/BM1-de/odoo-papierkram-import/actions/workflows/test.yml?query=branch%3A19.0)
-[![codecov](https://codecov.io/gh/BM1-de/odoo-papierkram-import/branch/19.0/graph/badge.svg)](https://codecov.io/gh/BM1-de/odoo-papierkram-import)
+[![Pre-commit Status](https://github.com/BM1-de/odoo-papierkram-import/actions/workflows/pre-commit.yml/badge.svg?branch=20.0)](https://github.com/BM1-de/odoo-papierkram-import/actions/workflows/pre-commit.yml?query=branch%3A20.0)
+[![Build Status](https://github.com/BM1-de/odoo-papierkram-import/actions/workflows/test.yml/badge.svg?branch=20.0)](https://github.com/BM1-de/odoo-papierkram-import/actions/workflows/test.yml?query=branch%3A20.0)
+[![codecov](https://codecov.io/gh/BM1-de/odoo-papierkram-import/branch/20.0/graph/badge.svg)](https://codecov.io/gh/BM1-de/odoo-papierkram-import)
 <!-- /!\ Non OCA Context : Set here the badge of your translation instance. -->
 
 <!-- /!\ do not modify above this line -->
 
-Von [Papierkram](https://www.papierkram.de) zu Odoo 19 wechseln, ohne etwas abzutippen:
+Von [Papierkram](https://www.papierkram.de) zu Odoo 20 wechseln, ohne etwas abzutippen:
 Kontakte, Rechnungen, Gutschriften, Belege, Zahlungen und Anlagegüter – auf Wunsch auch
 Produkte, Zeiten und noch nicht abgerechnete Leistungen – kommen direkt aus den
 Papierkram-Exporten nach Odoo. Wahlweise die komplette Historie oder nur die offenen
@@ -131,7 +131,7 @@ Die Beschreibung jedes Moduls (englisch) steht in seinem `README.rst`:
 [l10n_de_papierkram_import_timesheet](l10n_de_papierkram_import_timesheet/README.rst),
 [l10n_de_papierkram_import_euer](l10n_de_papierkram_import_euer/README.rst).
 
-*English: Move from Papierkram to Odoo 19: contacts, invoices, credit notes, vouchers,
+*English: Move from Papierkram to Odoo 20: contacts, invoices, credit notes, vouchers,
 payments and fixed assets, optionally products, time entries and unbilled work, taken over
 from the Papierkram exports – the complete history or only the open items. Alpha, no
 warranty.*
@@ -149,9 +149,9 @@ Available addons
 ----------------
 addon | version | maintainers | summary
 --- | --- | --- | ---
-[l10n_de_papierkram_import](l10n_de_papierkram_import/) | 19.0.1.0.0 | <a href='https://github.com/bm1-phillip'><img src='https://github.com/bm1-phillip.png' width='32' height='32' style='border-radius:50%;' alt='bm1-phillip'/></a> | Import contacts, invoices, vouchers, payments and assets from Papierkram
-[l10n_de_papierkram_import_euer](l10n_de_papierkram_import_euer/) | 19.0.1.0.0 | <a href='https://github.com/bm1-phillip'><img src='https://github.com/bm1-phillip.png' width='32' height='32' style='border-radius:50%;' alt='bm1-phillip'/></a> | Take over the fixed assets of Papierkram into the EÜR asset register
-[l10n_de_papierkram_import_timesheet](l10n_de_papierkram_import_timesheet/) | 19.0.1.0.0 | <a href='https://github.com/bm1-phillip'><img src='https://github.com/bm1-phillip.png' width='32' height='32' style='border-radius:50%;' alt='bm1-phillip'/></a> | Import products, time entries and unbilled work from Papierkram
+[l10n_de_papierkram_import](l10n_de_papierkram_import/) | 20.0.1.0.0 | <a href='https://github.com/bm1-phillip'><img src='https://github.com/bm1-phillip.png' width='32' height='32' style='border-radius:50%;' alt='bm1-phillip'/></a> | Import contacts, invoices, vouchers, payments and assets from Papierkram
+[l10n_de_papierkram_import_euer](l10n_de_papierkram_import_euer/) | 20.0.1.0.0 | <a href='https://github.com/bm1-phillip'><img src='https://github.com/bm1-phillip.png' width='32' height='32' style='border-radius:50%;' alt='bm1-phillip'/></a> | Take over the fixed assets of Papierkram into the EÜR asset register
+[l10n_de_papierkram_import_timesheet](l10n_de_papierkram_import_timesheet/) | 20.0.1.0.0 | <a href='https://github.com/bm1-phillip'><img src='https://github.com/bm1-phillip.png' width='32' height='32' style='border-radius:50%;' alt='bm1-phillip'/></a> | Import products, time entries and unbilled work from Papierkram
 
 [//]: # (end addons)
 
@@ -167,3 +167,32 @@ that explains its license.
 
 ----
 <!-- /!\ Non OCA Context : Set here the full description of your organization. -->
+
+<!-- bm1-verweise:start (scripts/readme-bm1.py, nicht von Hand ändern) -->
+
+## Weitere Odoo-Projekte von BM1
+
+| Projekt | Zweck |
+| ------- | ----- |
+| [Cc und Bcc](https://github.com/BM1-de/odoo-mail-cc-bcc) | Cc und Bcc beim Mailversand, eine einzige E-Mail an alle Empfänger |
+| [Briefanrede](https://github.com/BM1-de/odoo-partner-salutation) | Anrede am Kontakt und die passende Grußzeile in Rechnungsmails |
+| [Namenszusatz](https://github.com/BM1-de/odoo-partner-name-addition) | Zweite Namenszeile am Kontakt, gedruckt in jeder Anschrift |
+| [Stundennachweis auf der Rechnung](https://github.com/BM1-de/odoo-timesheet-invoice) | Abgerechnete Zeiteinträge auf der Rechnung, je Aufgabe summiert |
+| [Arbeitszeitgesetz](https://github.com/BM1-de/odoo-l10n-germany-arbzg) | Gesetzliche Pausen und Höchstarbeitszeit bei Anwesenheiten, Arbeitszeitkonto ab Odoo 20 |
+| [Deutsche EÜR](https://github.com/BM1-de/odoo-l10n-germany-euer) | Einnahmenüberschussrechnung mit Anlage EÜR, AVEÜR und Anlagenverzeichnis |
+| [Zeiterfassung für Odoo (macOS)](https://github.com/BM1-de/timesheets-for-odoo) | Menüleisten-App für Zeiten und Anwesenheit |
+| [Zeiterfassung für Odoo (Windows)](https://github.com/BM1-de/timesheets-for-odoo-windows) | App im Infobereich für Zeiten und Anwesenheit |
+
+## Über BM1
+
+<a href="https://bm1.de"><picture><source media="(prefers-color-scheme: dark)" srcset="docs/bm1/logo-bm1-negativ.svg"><img src="docs/bm1/logo-bm1.svg" alt="BM1" width="180"></picture></a>
+
+Entwickelt und gepflegt von [BM1](https://bm1.de), der Baumgärtner Marketing GmbH aus
+Bayreuth: Agentur für [Websites](https://bm1.de/websites/),
+[Webentwicklung](https://bm1.de/webentwicklung/), [SEO](https://bm1.de/seo/) und
+[individuelle digitale Lösungen](https://bm1.de/digitale-spezial-themen/). Wir arbeiten selbst
+jeden Tag mit Odoo und bauen, was uns dort fehlt. Wenn Sie Unterstützung bei Odoo, einer
+Website oder einer Anbindung brauchen, die es nicht von der Stange gibt:
+[sprechen Sie uns an](https://bm1.de/kontakt/).
+
+<!-- bm1-verweise:end -->
