@@ -152,6 +152,12 @@ msgid "Company"
 msgstr "Unternehmen"
 
 #. module: l10n_de_papierkram_import
+#: model:ir.model.fields,field_description:l10n_de_papierkram_import.field_res_partner__papierkram_is_company
+#: model:ir.model.fields,field_description:l10n_de_papierkram_import.field_res_users__papierkram_is_company
+msgid "Company in Papierkram"
+msgstr "Unternehmen in Papierkram"
+
+#. module: l10n_de_papierkram_import
 #: model:ir.model.fields.selection,name:l10n_de_papierkram_import.selection__papierkram_import__scope__complete
 msgid "Complete History"
 msgstr "Komplette Historie"
@@ -541,6 +547,14 @@ msgstr "Papierkram Belege"
 #: code:addons/l10n_de_papierkram_import/models/papierkram_import.py:0
 msgid "Papierkram import %s"
 msgstr "Papierkram-Übernahme %s"
+
+#. module: l10n_de_papierkram_import
+#: model:ir.model.fields,help:l10n_de_papierkram_import.field_res_partner__papierkram_is_company
+#: model:ir.model.fields,help:l10n_de_papierkram_import.field_res_users__papierkram_is_company
+msgid ""
+"Papierkram lists the contact as a company. Odoo regards it as a company also"
+" without VAT number, as long as it belongs to no other contact."
+msgstr "Papierkram führt den Kontakt als Unternehmen. Odoo betrachtet ihn auch ohne USt-IdNr. als Unternehmen, solange er zu keinem anderen Kontakt gehört."
 
 #. module: l10n_de_papierkram_import
 #: model:ir.model.fields,field_description:l10n_de_papierkram_import.field_papierkram_import__money_journal_id

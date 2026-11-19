@@ -147,10 +147,11 @@ Changelog
 - Binary fields return binary values instead of base64: the uploaded
   exports and lists are read and the PDF documents are attached that
   way.
-- Changed behaviour, caused by Odoo 20: Odoo decides on its own whether
-  a contact is a company, it is one as soon as it has a VAT number. The
-  import therefore no longer marks new contacts as companies; a contact
-  without VAT number is created as a person.
+- Odoo 20 regards a contact as a company only if it has a VAT number. A
+  contact that Papierkram lists as a company (its name differs from the
+  default recipient) and a contact known only by its name on a document
+  stay companies without VAT number, as in 19.0: the import marks them
+  with the new field *Company in Papierkram* of the contact.
 - The form of a finished import hides the files that were not uploaded;
   Odoo 20 would show "false" for them.
 - The button of the imported entries uses an icon of Odoo 20 (Material

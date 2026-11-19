@@ -137,5 +137,7 @@
  "purchase_journal_id": "purchase_journal_id",
  "Small business is ticked, but invoices show VAT (%s): untick it if the business was subject to regular VAT in Papierkram. Ticked, these invoices are imported without their VAT.": "Kleinunternehmer ist eingeschaltet, aber Rechnungen weisen Umsatzsteuer aus (%s): Schalten Sie es aus, wenn das Unternehmen in Papierkram regelbesteuert war. Eingeschaltet werden diese Rechnungen ohne ihre Umsatzsteuer übernommen.",
  "Import contacts, invoices, vouchers, payments and assets from Papierkram": "Kontakte, Rechnungen, Belege, Zahlungen und Anlagegüter aus Papierkram übernehmen",
- "Ratings": "Bewertungen"
+ "Ratings": "Bewertungen",
+ "Company in Papierkram": "Unternehmen in Papierkram",
+ "Papierkram lists the contact as a company. Odoo regards it as a company also without VAT number, as long as it belongs to no other contact.": "Papierkram führt den Kontakt als Unternehmen. Odoo betrachtet ihn auch ohne USt-IdNr. als Unternehmen, solange er zu keinem anderen Kontakt gehört."
 }

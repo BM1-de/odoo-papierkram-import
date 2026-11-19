@@ -618,11 +618,15 @@ class _Plan:
                 partner.papierkram_number = number
                 self.counts["partners_matched"] += 1
         if not partner and contact:
-            # Odoo decides whether the contact is a company: it is one as
-            # soon as it has a VAT number (is_company is computed)
+            # Papierkram lists a company under its name with a person as the
+            # default recipient; for a person both are the same. Odoo 20
+            # computes is_company (a company has a VAT number):
+            # papierkram_is_company keeps a company without VAT number one
+            person = f"{contact.first_name} {contact.last_name}".strip()
             partner = Partner.create(
                 {
                     "name": contact.name,
+                    "papierkram_is_company": person != contact.name,
                     "papierkram_number": number,
                     "ref": number,
                     "street": contact.street or False,
@@ -687,9 +691,11 @@ class _Plan:
             limit=1,
         )
         if not partner:
+            # known only by the name on the document: a company, as in 19.0
             partner = Partner.create(
                 {
                     "name": name,
+                    "papierkram_is_company": True,
                     "supplier_rank": 1 if supplier else 0,
                     "customer_rank": 0 if supplier else 1,
                 }

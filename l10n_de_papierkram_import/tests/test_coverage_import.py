@@ -335,19 +335,63 @@ class TestRegularVatImport(AccountTestInvoicingCommon):
     def test_partners(self):
         """Contacts: an unknown country and an invalid VAT number are only
         reported (the number is not stored); a customer without number is
-        found or created by name. Without VAT number Odoo does not regard a
-        contact as a company."""
+        found or created by name. Both are companies without VAT number."""
         muster = self._move("R-00100", "out_invoice").partner_id
         self.assertFalse(muster.country_id)
         self.assertIn("Country 'Atlantis' not found.", self.log)
         nordlicht = self._move("R-00101", "out_invoice").partner_id
         self.assertEqual(nordlicht.country_id.code, "ES")
         self.assertFalse(nordlicht.vat)
-        self.assertFalse(nordlicht.is_company)
+        # the rejected VAT number does not undo the company
+        self.assertTrue(nordlicht.is_company)
         self.assertIn("Contact K-00002: VAT number 'ES123' not imported.", self.log)
         walk_in = self._move("R-00105", "out_invoice").partner_id
         self.assertEqual(walk_in.name, "Laufkundschaft")
         self.assertFalse(walk_in.papierkram_number)
+        self.assertTrue(walk_in.is_company)
+
+    def test_company_or_person(self):
+        """A contact that Papierkram lists as a company (its name differs from
+        the default recipient) is a company also without VAT number; a person
+        (name and default recipient are the same) stays a person. Added to
+        another contact, the company becomes a contact person of it."""
+        run = self.env["papierkram.import"].create(
+            {"export_attachment_ids": [(6, 0, self.attachment.ids)]}
+        )
+        export = run._read_export()
+        self.addCleanup(export.close)
+        export.contacts["K-00011"] = Contact(
+            number="K-00011",
+            name="Gärtnerei Lindenhof",
+            kind="customer",
+            first_name="Erika",
+            last_name="Beispiel",
+        )
+        export.contacts["K-00012"] = Contact(
+            number="K-00012",
+            name="Erika Beispiel",
+            kind="customer",
+            first_name="Erika",
+            last_name="Beispiel",
+        )
+        plan = _Plan(run, export)
+        company = plan._partner_by_number("K-00011")
+        person = plan._partner_by_number("K-00012")
+        self.assertFalse(company.vat)
+        self.assertEqual(
+            (company.is_company, company.papierkram_is_company), (True, True)
+        )
+        self.assertEqual(
+            (person.is_company, person.papierkram_is_company), (False, False)
+        )
+        # other changes keep the company
+        company.street = "Lindenweg 3"
+        self.env.flush_all()
+        self.assertTrue(company.is_company)
+        holding = self.env["res.partner"].create({"name": "Lindenhof Holding"})
+        company.parent_id = holding
+        self.assertFalse(company.is_company)
+        self.assertEqual(company.commercial_partner_id, holding)
 
     def test_valid_vat_number_is_stored(self):
         """A valid VAT number of a new contact is stored on the partner; the
